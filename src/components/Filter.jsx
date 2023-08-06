@@ -1,17 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Filter = ({ value, onChange }) => {
+const Filter = ({ onChange }) => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (event) => {
+    const newValue = event.target.value;
+    setValue(newValue);
+    onChange(newValue);
+  }
+  
   return (
     <label className="label">
       Find contacts by name
-      <input type="text" value={value} onChange={(event) => onChange(event.target.value)} />
+      <input type="text" value={value} onChange={handleChange} />
     </label>
   );
 };
 
 Filter.propTypes = {
-  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 };
 
