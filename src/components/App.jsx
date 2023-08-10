@@ -34,6 +34,7 @@ const App = () => {
     };
 
     setContacts(prevContacts => [...prevContacts, contact]);
+    setFilter('');
   };
 
   const handleFilterChange = (filter) => {
